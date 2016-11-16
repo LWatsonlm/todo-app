@@ -23,11 +23,13 @@ class TodoList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: [],
+      items: []
     }
   }
 
   addItem(e) {
+    e.preventDefault(e)
+    console.log(this.state.items);
     let itemArray = this.state.items
       itemArray.push(
         {
@@ -44,7 +46,6 @@ class TodoList extends Component {
     this._inputElement.value = ""
     // to ovverride the default onSubmit event
     // so when we submit, only the addItm method is called, not the default POST behavior
-    e.preventDefault()
   }
 
   render() {
@@ -53,7 +54,7 @@ class TodoList extends Component {
         <div className="header">
           <h1>Todo.ly</h1>
           <form onSubmit={this.addItem}>
-            <input ref={(a) => this._inputElement = a}
+            <input ref={(a) => this._inputElement = (a)}
                     placeholder="enter task"></input>
             <button type="submit">add!</button>
           </form>
